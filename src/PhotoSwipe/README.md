@@ -62,8 +62,7 @@ class HomeController extends AbstractController
         
         // Also you can combine into single instantiation
         $gallery = $galleryBuilder->createGallery(
-            ['arrowKeys' => false, 'bgOpacity' => 0.5],
-            'hello'
+            ['arrowKeys' => false, 'bgOpacity' => 0.5]
         );
 
         foreach ($images as $image) {
@@ -116,7 +115,6 @@ export default class extends Controller {
 
         // Update some options
         event.detail.options.arrowKeys = true;
-
     }
 
     _onConnect(event) {
@@ -126,11 +124,14 @@ export default class extends Controller {
 }
 ```
 
-Then in your render call, add your controller as an HTML attribute:
+Then you must set the Gallery Data Controller:
 
 ```php
 /** @var Gallery $gallery */
-$gallery = $galleryBuilder->createGallery([], 'home');
+$gallery = $galleryBuilder->createGallery([], 'gallery');
+// or
+$gallery = $galleryBuilder->createGallery();
+$gallery->setDataController('gallery');
 ```
 
 ## Backward Compatibility promise
